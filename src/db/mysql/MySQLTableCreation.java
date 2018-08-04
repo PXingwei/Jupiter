@@ -58,7 +58,13 @@ public class MySQLTableCreation {
 					+ "last_favor_time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, " + " PRIMARY KEY (user_id, item_id),"
 					+ "FOREIGN KEY (item_id) REFERENCES items(item_id),"
 					+ "FOREIGN KEY (user_id) REFERENCES users(user_id))";
+			stmt.executeUpdate(sql);			
+
+			// Step 4: insert a fake user 3229c1097c00d497a0fd282d586be050
+			sql = "INSERT INTO users VALUES (\"1111\", \"3229c1097c00d497a0fd282d586be050\", \"John\", \"Smith\")";
 			stmt.executeUpdate(sql);
+			
+			System.out.println("Import is done successfully.");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
